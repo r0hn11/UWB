@@ -1,3 +1,12 @@
+<?php
+    session_start();
+    if(!isset($_SESSION['aname'])){
+        echo"<script language='javascript'>
+                 alert('You are logged out...');
+            </script>";
+        header('location: admin-login.html');
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,7 +27,7 @@
         <div id="dscr">United Well-Being Fo.</div>
     </div>
     <div class="navigation">
-        <a class="button" href="">
+        <a class="button" href="intern-details-logout.php">
             <img src="logo.jpg">
             <div class="logout">LOGOUT</div>
         </a>
@@ -33,7 +42,7 @@
         <form id='idetails-form' method="post" action="intern-details-verify.php">
             <div class='form-input'>
                 <label id='name-label'>Name</label>
-                <input type='text' id='name' placeholder='Enter name' class='form-input-size' required />
+                <input type='text' id='name' placeholder='Enter name' name='name' class='form-input-size' required />
             </div>
             <div class='form-input'>
                 <label id='email-label'>Email</label>
@@ -49,7 +58,7 @@
             </div>
             <div class='form-input'>
                 <label id='dob-label'>Date of Birth</label>
-                <input type='date' id='dob' placeholder='Enter Date of Birth' class='form-input-size' required />
+                <input type='date' id='dob' placeholder='Enter Date of Birth' name='dob' class='form-input-size' required />
             </div>
             <!-- <div class='form-input'>
                 <label id='qualification-label'>Highest Qualification</label>
@@ -57,7 +66,7 @@
             </div> -->
             <div class='form-input'>
                 <p>Enter the Highest Qualification</p>
-                <select id='dropdown' class='form-input-size' required>
+                <select id='dropdown' name='qualification' class='form-input-size' required>
                     <option disabled selected value>Select Qualification</option>
                     <option value='HSC'>HSC (12th)</option>
                     <option value='Diploma'>Diploma</option>
@@ -71,31 +80,30 @@
             </div>
             <div class='form-input'>
                 <p>Department</p>
-                <input type='radio' name='answer' id='radio-btn' value='Health&Care' />Health & Care </br>
-                <input type='radio' name='answer' id='radio-btn' value='HR' />HR </br>
-                <input type='radio' name='answer' id='radio-btn' value='Marketing' />Marketing </br>
-                <input type='radio' name='answer' id='radio-btn' value='PR&BD' />PR & BD </br>
+                <input type='radio' name='dpet' id='radio-btn' value='Health and Care' />Health & Care </br>
+                <input type='radio' name='dept' id='radio-btn' value='HR' />HR </br>
+                <input type='radio' name='dept' id='radio-btn' value='Marketing' />Marketing </br>
+                <input type='radio' name='dept' id='radio-btn' value='PR and BD' />PR & BD </br>
             </div>
             <div class='form-input'>
                 <label id='pos-label'>Position</label>
-                <input type='text' id='pos' placeholder='Enter Position' class='form-input-size' required />
+                <input type='text' id='pos' placeholder='Enter Position' name='pos' class='form-input-size' required />
             </div>
             <div class='form-input'>
                 <label id='city-label'>City</label>
-                <input type='text' id='city' placeholder='Enter City' class='form-input-size' required />
+                <input type='text' id='city' placeholder='Enter City' name='city' class='form-input-size' required />
             </div>
             <div class='form-input'>
                 <label id='doj-label'>Date Of Joining</label>
-                <input type='date' id='doj' placeholder='Enter Date Of Joining' class='form-input-size' required />
+                <input type='date' id='doj' placeholder='Enter Date Of Joining' name='joindate' class='form-input-size' required />
             </div>
             <div class='form-input'>
                 <label id='tenure-label'>Tenure (In Months)</label>
-                <input type='number' id='tenure' placeholder='Enter Tenure(In Months)' class='form-input-size'
-                    required />
+                <input type='number' id='tenure' placeholder='Enter Tenure(In Months)' name='tenure' class='form-input-size' required />
             </div>
             <div class='form-input'>
                 <label id='Cid-label'>Certificate ID</label>
-                <input type='text' id='Cid' placeholder='Enter Certificate ID' class='form-input-size' required />
+                <input type='text' id='Cid' placeholder='Enter Certificate ID' name='cerid' class='form-input-size' required />
             </div>
             <div class='form-input'>
                 <button type='submit' name="submit" id='submit'>Submit</button>
