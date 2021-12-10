@@ -4,61 +4,71 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin-login</title>
+    <title>Admin</title>
     <link rel="stylesheet" href="admin-login-style.css">
 </head>
+
 <body>
-    <div class="outerbox">
-        <form action="admin-login-validate.php" class="flex-column" autocomplete="off" method="post">
-            <i class="fas fa-user-circle posit-yn"></i>
-            <div class='posit-yn' id="ttl">Admin login</div> 
-            <div class="input_box flex-column invisible">
-                <div id="box1">
-                    <input type="text" name="aname" id="username" required>
-                    <div class="underline" id="underline1"></div>
-                    <label>Username</label>
+    <div class="wrapper flex-col">
+        <div class="front flex-col">
+            <div class="icon"></div>
+            <div class="ttl">Admin login</div>
+            <div class="btn">login</div>
+        </div>
+        <form action="admin-login-validate.php" class="rear flex-col vanish2" autocomplete="off" method="post">
+            <div class="icon"></div>
+            <div class="ttl">Admin login</div>
+            <div class="user-input flex-col">
+                <div class="box usrn">
+                    <input type="text" name="aname" id="usrname" required>
+                    <div class="underline"></div>
+                    <label>username</label>
                 </div>
-                <div id="box1">
-                    <input type="password" name="apw" id="password" required>
-                    <div class="underline" id="underline2"></div>
-                    <label>Password</label>
+                <div class="box pass">
+                    <input type="password" name="apw" id="passw" required>
+                    <div class="underline"></div>
+                    <label>password</label>
                 </div>
             </div>
-            <button type="submit" name="login" class="login_btn posit-yp">LOGIN</button>
-            <a href="#" class="posit-yp">Reset password?</a>
-        </form>
+            <button type="submit" name="login" class="btn">login</butt>
+        </div>
     </div>
 </body>
-<script src="https://kit.fontawesome.com/7c7b8993a0.js" crossorigin="anonymous"></script>
-<script>
-            let form = document.querySelector('form');
-            let icon = document.querySelector('i');
-            let ttl = document.getElementById('ttl');
-            let btn = document.getElementsByClassName('login_btn');
-            let input_box = document.getElementsByClassName('input_box');
-            let outerbox = document.getElementsByClassName('outerbox');
-            let reset = document.querySelector('a');
 
-
-            btn[0].addEventListener('click', ()=>{
-                icon.classList.add('shrink');
-                input_box[0].classList.remove('invisible');
-                input_box[0].style.display = 'flex';
-                setTimeout(() => {
-                    input_box[0].style.opacity = '1';
-                }, 1000);
-                icon.classList.remove('posit-yn');
-                ttl.classList.remove('posit-yn');
-                btn[0].classList.remove('posit-yp');
-                reset.classList.remove('posit-yp');
-                outerbox[0].style.padding = '1.5em'
-            }); 
-</script>
 <script>
-    let hght = 0;
-    setInterval(function() {
-        hght = window.innerHeight;
+    /*grabbing elements*/
+    let body =document.querySelector('body');
+    let front = document.querySelector('.front');
+    let rear = document.querySelector('.rear');
+    let wrapper = document.querySelector('.wrapper');
+    let btn = document.querySelector('.btn');
+
+    /*setting height*/
+    window.onresize = heightcheck;
+    function heightcheck() {
+        let hght = window.innerHeight;
         (document.getElementsByTagName('body')[0]).style.height = hght+'px';
-    }, 10);
+    }
+    
+    /*functions*/
+    function set_equal_dim(){
+        front.style.width = rear.offsetWidth+'px';
+        front.style.height = rear.offsetHeight+'px';
+        wrapper.style.width = `calc(10em + ${rear.offsetWidth}px)`;
+        wrapper.style.height = `calc(5em + ${rear.offsetHeight}px)`;
+    }
+    let show_flag = 0;
+    function switch_pg(){
+        front.classList.add('vanish');
+        rear.classList.remove('vanish2');
+        show_flag = 1;
+    }
+
+    /*events*/
+    body.addEventListener('load',set_equal_dim());
+    body.addEventListener('load',heightcheck());
+    body.addEventListener('resize',heightcheck());
+    btn.addEventListener('click',switch_pg);    
 </script>
+
 </html>
