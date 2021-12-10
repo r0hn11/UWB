@@ -40,7 +40,7 @@
 </head>
 <body>
     <div id="top" class="flex">
-        <div ><img src="download.jpg" class="img" alt="Site Name" /></div>
+        <div ><img src="logo.jpg" class="img" alt="Site Name" /></div>
         <div id="dscr">Certificate</div>
     </div>
     <div id="details" class="flex-column">
