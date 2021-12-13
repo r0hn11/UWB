@@ -104,8 +104,10 @@ textarea {
 @import url(https://fonts.googleapis.com/css?family=Oswald:400);
 
 .navigation {
-    width: 100%;
     position: fixed;
+    right: 0;
+    display: flex;
+    justify-content: flex-end;
 }
 
 img {
@@ -140,6 +142,14 @@ img {
     transition: width .35s;
     -webkit-transition: width .35s;
     overflow: hidden
+}
+
+.err{
+    visibility:visible;
+    color: red; 
+    display: none;
+    font-size: 1rem;
+    margin: 2px;
 }
 
 a:hover {
