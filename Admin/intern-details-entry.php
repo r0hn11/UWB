@@ -80,7 +80,7 @@
             </div>
             <div class='form-input'>
                 <p>Department</p>
-                <input type='radio' name='dpet' id='radio-btn' value='Health and Care' />Health & Care </br>
+                <input type='radio' name='dept' id='radio-btn' value='Health and Care' />Health & Care </br>
                 <input type='radio' name='dept' id='radio-btn' value='HR' />HR </br>
                 <input type='radio' name='dept' id='radio-btn' value='Marketing' />Marketing </br>
                 <input type='radio' name='dept' id='radio-btn' value='PR and BD' />PR & BD </br>
