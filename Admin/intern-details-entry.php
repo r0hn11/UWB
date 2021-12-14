@@ -17,7 +17,76 @@
     <link rel="stylesheet" type="text/css" href="intern-details-style.css">
     <title>Intern Data Upload Form</title>
     <script>
-        //Client side validations
+function validate(){
+            var flg = true;
+            //Username Validation
+            var username = document.getElementById("name").value;
+            if(username.trim()==""){
+                document.getElementById("err-name").style.visibility="visible";
+                document.getElementById("err-name").style.display="block";
+                flg = false;
+            }
+            else{
+                document.getElementById("err-name").style.visibility="hidden";
+                flg = true;
+            }
+
+            //Phone Number Validation
+            var phoneno = document.getElementById("phone").value;
+            var whatsappno = document.getElementById("wnumber").value;
+            var regex = /^[1-9]\d{9}$/;
+
+            if(!(regex.test(phoneno))){
+                document.getElementById("err-phone").style.visibility="visible";
+                document.getElementById("err-phone").style.display="block";
+                flg = false;
+            }
+            else{
+                document.getElementById("err-phone").style.visibility="hidden";
+                flg = true;
+            }
+            //Whatsapp Number Validation
+            if(!(regex.test(whatsappno))){
+                document.getElementById("err-whatsapp").style.visibility="visible";
+                document.getElementById("err-whatsapp").style.display="block";
+                flg = false;
+            }
+            else{
+                document.getElementById("err-whatsapp").style.visibility="hidden";
+                flg = true;
+            }
+            //Aadhar Number Validation
+            var aadharno = document.getElementById("aadhar").value;
+            var regexaadhar = /^[1-9]\d{11}$/;
+            if(!(regexaadhar.test(aadharno)) || aadharno.trim().length!=12){
+                document.getElementById("err-aadhar").style.visibility="visible";
+                document.getElementById("err-aadhar").style.display="block";
+                flg = false;
+            }
+            else{
+                document.getElementById("err-aadhar").style.visibility="hidden";
+                flg = true;
+            }
+            //Email Verification
+            var email = document.getElementById("email");
+            var regexemail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+            if(!(regexemail.match(email))){
+                document.getElementById("err-email").style.visibility="visible";
+                document.getElementById("err-email").style.display="block";
+                flg = false;
+            }
+            else{
+                document.getElementById("err-email").style.visibility="hidden";
+                flg = true;
+            }
+            if(flg){
+                return true;
+            }else{
+                alert("Enter Correct Details!")
+                return false;
+            }
+        }
+
     </script>
 </head>
 
@@ -43,18 +112,22 @@
             <div class='form-input'>
                 <label id='name-label'>Name</label>
                 <input type='text' id='name' placeholder='Enter name' name='name' class='form-input-size' required />
+                <label id="err-name" class="err" >Invalid Username </label>
             </div>
             <div class='form-input'>
                 <label id='email-label'>Email</label>
                 <input type='email' id='email' name="email" placeholder='Enter email' class='form-input-size' required />
+                <label id="err-email" class="err">Invalid email </label>
             </div>
             <div class='form-input'>
                 <label id='phone-label'>Phone Number</label>
-                <input type='tel' id='phone' name="phone" placeholder='Enter Pnone Number' class='form-input-size' required />
+                <input type='tel' id='phone' name="phone" placeholder='Enter Phone Number' class='form-input-size' required />
+                <label id="err-phone" class="err">Invalid Phone Number</label>
             </div>
             <div class='form-input'>
-                <label id='wnumber-label'>What's App Number</label>
-                <input type='tel' id='wnumber' name="wpno" placeholder='Enter Whats App Number' class='form-input-size' required />
+                <label id='wnumber-label'>WhatsApp Number</label>
+                <input type='tel' id='wnumber' name="wpno" placeholder='Enter WhatsApp Number' class='form-input-size' required />
+                <label id="err-whatsapp" class="err">Invalid Whatsapp Number</label>
             </div>
             <div class='form-input'>
                 <label id='dob-label'>Date of Birth</label>
@@ -77,10 +150,11 @@
             <div class='form-input'>
                 <label id='aadhar-label'>Aadhar Number</label>
                 <input type='number' id='aadhar' name="aadhar" placeholder='Enter Aadhar Number' class='form-input-size' required />
+                <label id="err-aadhar" class="err">Enter Valid Aadhar Number</label>
             </div>
             <div class='form-input'>
                 <p>Department</p>
-                <input type='radio' name='dpet' id='radio-btn' value='Health and Care' />Health & Care </br>
+                <input type='radio' name='dept' id='radio-btn' value='Health and Care' />Health & Care </br>
                 <input type='radio' name='dept' id='radio-btn' value='HR' />HR </br>
                 <input type='radio' name='dept' id='radio-btn' value='Marketing' />Marketing </br>
                 <input type='radio' name='dept' id='radio-btn' value='PR and BD' />PR & BD </br>
