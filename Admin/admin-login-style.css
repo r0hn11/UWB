@@ -7,14 +7,16 @@
     font-family: 'Poppins', sans-serif;
 }
 :root{
-    --special : #35B7F1;
+    --special : #74c6e9;
     --big_text : #444;
     --txt : #222;
-    --bg : #fff;
-    --faded : rgba(0, 0, 0, 0.4);
+    --bg : #f9f9f9;
+    --wrapper_bg : #fff;
+    --faded : rgba(0, 0, 0, 0.15);
+    --faded_txt: rgba(0, 0, 0, 0.4);
     --shdw_in : inset 0 0 20px rgb(0,0,0,0.2);
-    --shdw_out : 0 0 15px rgb(0,0,0,0.2);
-    --icon_shdw : 0 0 15px rgba(0, 0, 0, 0.15);
+    --shdw_out : 0 0 15px rgb(0,0,0,0.05);
+    --icon_shdw : 0 0 15px rgba(0, 0, 0, 0.1);
 }
 
 @media (prefers-color-scheme : dark){
@@ -22,7 +24,9 @@
         --big_text : #fff;
         --txt : #ddd;
         --bg : #222;
-        --faded : rgba(255, 255, 255, 0.4);
+        --wrapper_bg : #2c2c2c;
+        --faded : rgba(255, 255, 255, 0.15);
+        --faded_txt : rgba(255, 255, 255, 0.4);
         --shdw_in : inset 0 0 20px rgb(0,0,0,1);
         --shdw_out : 0 0 15px rgb(0,0,0,1);
         --icon_shdw : 0 0 8px rgba(53, 181, 241, 0.5);
@@ -37,6 +41,7 @@ body{
     box-shadow: var(--shdw_in);
     background: var(--bg);
     transition: 0.2s ease-in-out;
+    background: var(--wrapper_bg);
 }
 .flex-col{
     display: flex;
@@ -56,9 +61,8 @@ body{
 
 /*parent*/
 .wrapper{
-    padding: 3em 1.5em;
     margin: 0 1em;
-    border-radius: 15px;
+    border-radius: 10px;
     position: relative;
     transition: 0.3s ease-in-out;
 }
@@ -67,8 +71,8 @@ body{
     height: 120px;
     width: 120px;
     border-radius: 50%;
-    margin: 1em 0;
-    filter: drop-shadow(var(--icon_shdw));
+    margin: 16px 0;
+    filter: drop-shadow(var(--icon_shdw)) hue-rotate(-50deg) saturate(0.5);
     transition: 0.2s ease-in-out;
 }
 .rear>.icon{
@@ -76,16 +80,19 @@ body{
     height: 75px;
     width: 75px;
     border-radius: 50%;
-    margin: 1em 0;
-    filter: drop-shadow(var(--icon_shdw));
+    margin: 16px 0;
+    filter: drop-shadow(var(--icon_shdw)) hue-rotate(-30deg) saturate(0.5);
     transition: 0.2s ease-in-out;
 }
 .ttl{
-    font-size: 1em;
+    font-size: 18px;
     color: var(--big_text);
     font-weight: 700;
     letter-spacing: 2px;
     transition: 0.2s ease-in-out;
+}
+.rear>.ttl{
+    font-size: 15px;
 }
 .btn{
     cursor: pointer;
@@ -95,7 +102,7 @@ body{
     color: #fff;
     text-transform: uppercase;
     letter-spacing: 2px;
-    font-size: 0.85em;
+    font-size: 18px;
     font-weight: 500;
     background: var(--special);
     padding: 0.5em 1.5em;
@@ -104,7 +111,8 @@ body{
     transition: 0.2s ease-in-out;
 }
 .rear>.btn{
-    margin: 1em 0;
+    margin: 10px 0;
+    margin-bottom: 20px;
 }
 .btn:hover{
     text-shadow: 0 0 5px #fff;
@@ -116,7 +124,8 @@ input{
     border: none;
     border-bottom: 2px solid var(--faded);
     color: var(--txt);
-    font-size: 1em;
+    font-size: 18px;
+    letter-spacing: 1px;
     padding: 0.3em 0;
     max-width: 180px;
     position: relative;
@@ -139,13 +148,14 @@ input{
     transition-delay: 0.5s;
 }
 .user-input{
-    margin: 60px 0;
-    gap: 2.5em;
+    margin: 40px 0;
+    gap: 30px;
 }
 .box{
     position: relative;
 }
 label{
+    font-size: 17px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -155,7 +165,7 @@ label{
     left: 0;
     right: 0;
     bottom: 0;
-    color: var(--faded);
+    color: var(--faded_txt);
     letter-spacing: 1px;
     transition: 0.2s ease-in-out;
     z-index: -1;
@@ -180,21 +190,23 @@ input:focus~.underline::before,input:valid~.underline::before{
     transform: scaleX(1);
 }
 input:focus~label,input:valid~label{
-    transform: translateY(-30px);
-    font-size: 0.85em;
+    transform: translateY(-25px);
+    font-size: 14px;
     color: var(--special);
 }
 
 /*medias*/
 @media screen and (min-width:400px) {
     body{
+        background: var(--bg);
         box-shadow: none;
     }
     .wrapper{
         box-shadow: var(--shdw_out);
+        background: var(--wrapper_bg);
     }
     .ttl{
-        font-size: 1.2em;
+        font-size: 18px;
     }
     .front>.icon{
         height: 155px;
@@ -205,7 +217,7 @@ input:focus~label,input:valid~label{
         width: 85px;
     }
     .btn{
-        font-size: 1em;
+        font-size: 17px;
         border-radius: 999px;
     }
 }

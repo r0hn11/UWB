@@ -42,6 +42,9 @@
     let rear = document.querySelector('.rear');
     let wrapper = document.querySelector('.wrapper');
     let btn = document.querySelector('.btn');
+    
+    wrapper.style.width = `calc(150px + ${rear.offsetWidth}px)`;
+    wrapper.style.height = `calc(50px + ${rear.offsetHeight}px)`;
 
     /*setting height*/
     window.onresize = heightcheck;
@@ -51,12 +54,6 @@
     }
     
     /*functions*/
-    function set_equal_dim(){
-        front.style.width = rear.offsetWidth+'px';
-        front.style.height = rear.offsetHeight+'px';
-        wrapper.style.width = `calc(10em + ${rear.offsetWidth}px)`;
-        wrapper.style.height = `calc(3em + ${rear.offsetHeight}px)`;
-    }
     let show_flag = 0;
     function switch_pg(){
         front.classList.add('vanish');
@@ -65,10 +62,8 @@
     }
 
     /*events*/
-    body.addEventListener('load',set_equal_dim());
     body.addEventListener('load',heightcheck());
     body.addEventListener('resize',heightcheck());
     btn.addEventListener('click',switch_pg);    
 </script>
-
 </html>
